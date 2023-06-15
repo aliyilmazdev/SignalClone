@@ -3,10 +3,12 @@ import React from "react";
 import ChatRoomItem from "../components/ChatRoomItem";
 import chatRoomData from "../../assets/dummy-data/ChatRooms";
 import { FlashList } from "@shopify/flash-list";
+import NavigationBar from "../components/NavigationBar";
 
 const FirstScreen = () => {
   return (
     <View style={styles.container}>
+      <NavigationBar />
       <FlashList
         data={chatRoomData}
         renderItem={({ item }) => <ChatRoomItem chatRoom={item} />}

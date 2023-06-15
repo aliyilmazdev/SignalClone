@@ -1,15 +1,26 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./src/screens/HomeScreen";
-import SecondScreen from "./src/screens/SecondScreen";
-const Tab = createBottomTabNavigator();
+import ChatRoomScreen from "./src/screens/ChatRoomScreen";
+import {
+  Dimensions,
+  Image,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 
-export default function Tabs() {
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+const Stack = createNativeStackNavigator();
+
+export default function RootStack() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="HomeScreen" component={HomeScreen} />
-      <Tab.Screen name="SecondScreen" component={SecondScreen} />
-    </Tab.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen} />
+    </Stack.Navigator>
   );
 }

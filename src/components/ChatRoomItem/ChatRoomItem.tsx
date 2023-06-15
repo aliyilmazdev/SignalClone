@@ -1,6 +1,7 @@
 import React from "react";
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet, Pressable } from "react-native";
 import styles from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 interface DataModel {
   id: string;
@@ -27,8 +28,13 @@ interface ChatRoomItemProps {
 
 export default function ChatRoomItem({ chatRoom }: ChatRoomItemProps) {
   const user = chatRoom.users[1];
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("ChatRoomScreen");
+  };
   return (
-    <View style={styles.container}>
+    <Pressable onPress={onPress} style={styles.container}>
       <Image
         style={styles.image}
         source={{
@@ -49,6 +55,6 @@ export default function ChatRoomItem({ chatRoom }: ChatRoomItemProps) {
           {chatRoom.lastMessage.content}
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
